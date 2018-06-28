@@ -1,57 +1,64 @@
 import React, { Component } from 'react'
 
 import './gotenForm.css'
-import { GotenTextField } from 'goten-react-text-field';
 
+
+const pubsubMessage = 'VALIDATE_GOTEN_COMPONENTS_'
+const pubsubMessageResponse = '_RESPONSE'
+let cont = 0
 
 export class GotenForm extends Component {
-    ref = undefined
-    
-    _validate = () => {
-        const gotenTextFields = []
-        this._recursiveObtainGotenTextFields(this.props.children, gotenTextFields)
-        for(const gotenTextField of gotenTextFields) {
-            console.log(gotenTextField)
-            if (gotenTextField.validate().error)
-                return true
-        }
-        return false
-    }
-
-    _recursiveObtainGotenTextFields(children, gotenTextFields){
-        if (!children)
-            return
-        if (Array.isArray(children)) {
-            for (const child of children) {
-                this._recursiveObtainGotenTextFields(child.props.children, gotenTextFields)
-            }
-            return
-        }
-        if (children.props) {
-            if (children.type.name === 'GotenTextField') {
-                gotenTextFields.push(children)
+    constructor(props) {
+        super(props)
+        this.pubsubMessage = pubsubMessage + ++cont
+        this.gotenTextFieldCant = 0
+        this.responses = 0
+        this.errorsCant = 0
+        this.subscription = PubSub.subscribe(this.pubsubMessage + pubsubMessageResponse, (_, response) => {
+            if (response) {
+                this.responses ++
+            } else {
                 return
             }
-            this._recursiveObtainGotenTextFields(children.props.children, gotenTextFields)
-        }
+            if(this.responses === this.gotenTextFieldCant){
+                this.props.onClick(event)
+            }
+        })
+    }
+    
+    renderComponents(children) {
+        return React.Children.map(children, child => {
+            if (!React.isValidElement(child)) return child
+            let childProps = {}
+            if (child.type.name === 'GotenTextField') {
+                this.gotenTextFieldCant ++
+                childProps = { _pubsub_message: this.pubsubMessage }
+                return React.cloneElement(child, childProps)
+            }
+            childProps.children = this.renderComponents(child.props.children)
+            return React.cloneElement(child, childProps)
+        })
     }
 
+
     onClick = (event) => {
-        console.log('ON_CLICK')
-        if( !this._validate()) {
-            return
-        }
-        this.props.onClick(event)
+        this.responses = 0
+        PubSub.publish(this.pubsubMessage, null)
     }
 
     render() {
+        this.gotenTextFieldCant = 0
         return (
             <div>
-                {this.props.children}
+                {this.renderComponents(this.props.children)}
                 {React.cloneElement(this.props.buttonComponent, {
                     onClick: this.onClick
                 })}
             </div>
         )
+    }
+
+    componentWillUnmount() {
+        PubSub.unsubscribe(this.subscribe)
     }
 }
