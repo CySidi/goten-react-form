@@ -1,4 +1,6 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import PubSub from 'pubsub-js'
 
 import './gotenForm.css'
 
@@ -13,15 +15,15 @@ export class GotenForm extends Component {
         this.pubsubMessage = pubsubMessage + ++cont
         this.gotenTextFieldCant = 0
         this.responses = 0
-        this.errorsCant = 0
+        this.errorTrue = false
         this.subscription = PubSub.subscribe(this.pubsubMessage + pubsubMessageResponse, (_, response) => {
-            if (response) {
-                this.responses ++
-            } else {
-                return
+            ++ this.responses
+            if (!response) {
+                this.errorTrue = true
             }
-            if(this.responses === this.gotenTextFieldCant){
-                this.props.onClick(event)
+            if (this.responses === this.gotenTextFieldCant) {
+                const onError = this.props.onError ? this.props.onError : _=> null
+                this.errorTrue ? onError() : this.props.onSucces()
             }
         })
     }
@@ -40,10 +42,14 @@ export class GotenForm extends Component {
         })
     }
 
-
-    onClick = (event) => {
+    validate() {
+        this.errorTrue = false
         this.responses = 0
         PubSub.publish(this.pubsubMessage, null)
+    }
+
+    onClick = (event) => {
+        this.validate()
     }
 
     render() {
@@ -51,7 +57,8 @@ export class GotenForm extends Component {
         return (
             <div>
                 {this.renderComponents(this.props.children)}
-                {React.cloneElement(this.props.buttonComponent, {
+                {this.props.buttonComponent && 
+                    React.cloneElement(this.props.buttonComponent, {
                     onClick: this.onClick
                 })}
             </div>
@@ -61,4 +68,10 @@ export class GotenForm extends Component {
     componentWillUnmount() {
         PubSub.unsubscribe(this.subscribe)
     }
+}
+
+GotenForm.propTypes = {
+    buttonComponent: PropTypes.element,
+    onSucces: PropTypes.func.isRequired,
+    onError: PropTypes.func
 }

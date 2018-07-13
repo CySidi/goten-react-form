@@ -14,8 +14,6 @@ export default class ExampleGotenForm extends Component {
     constructor(props) {
         super(props)
         this.state = stateExampleGotenForm
-        this.refsGotenTextFieldWithPattern = React.createRef()
-        this.refsGotenTextField = {}
         this.gotenTextFields = {}
     }
     
@@ -47,7 +45,6 @@ export default class ExampleGotenForm extends Component {
                         type={type}     // Example: 'text'
                         bindContainer={this.gotenTextFields}
                         bindProp={id}
-                        ref={(element) => this.addGotenTextFieldRef(id, element)}
                     />
                 </th>
                 <th className='item'>
@@ -58,7 +55,6 @@ export default class ExampleGotenForm extends Component {
                         showError={true}
                         bindContainer={this.gotenTextFields}
                         bindProp={id + 'show'}
-                        ref={(element) => this.addGotenTextFieldRef(id + 'show', element)}
                     />
                 </th>
                 <th className='item'>
@@ -70,7 +66,6 @@ export default class ExampleGotenForm extends Component {
                         showError={true}
                         bindContainer={this.gotenTextFields}
                         bindProp={id + 'showAndRequired'}
-                        ref={(element) => this.addGotenTextFieldRef(id + 'showAndRequired', element)}
                     />
                 </th>
             </tr>
@@ -80,7 +75,12 @@ export default class ExampleGotenForm extends Component {
     render() {
         return (
             <GotenForm
-                onClick = { () => {
+                onSucces = { _=> {
+                    this.message = 'FORM PASSED'
+                    this.setState({ changeOnPress: !this.state.changeOnPress })
+                }}
+                onError = { _=> {
+                    this.message = 'ERROR'
                     this.setState({ changeOnPress: !this.state.changeOnPress })
                 }}
                 buttonComponent = {
@@ -119,15 +119,13 @@ export default class ExampleGotenForm extends Component {
                                     showError={true}
                                     bindContainer={this.gotenTextFields}
                                     bindProp={'pattern'}
-                                    ref={this.refsGotenTextFieldWithPattern}
                                 />          
-                            </th>
-                            <th className='item'>
-                                <div className='message'>{this.gotenTextFields.pattern}</div>
                             </th>
                         </tr>
                     </tbody>
                 </table>
+                <div className='message'>{this.message}</div>
+                {this.separator(2)}
             </GotenForm>
         )
     }
