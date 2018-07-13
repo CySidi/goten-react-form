@@ -1,13 +1,13 @@
 {
   "name": "goten-react-form",
   "version": "1.0.0",
-  "description": "",
+  "description": "Form that serves to validate all GotenTextFields inside it",
   "author": "Nicolas Meilan <sebastian.nicolas.meilan@gmail.com>",
   "main": "dist/index.js",
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/CySidi/goten-react-form"
   },
   "scripts": {
     "test": "jest --coverage",
