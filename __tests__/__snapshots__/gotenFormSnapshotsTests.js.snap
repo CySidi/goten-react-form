@@ -1,0 +1,90 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`GotenForm snapshots with buttonComponent 1`] = `
+<div>
+  <input
+    onClick={[Function]}
+    type="submit"
+    value="Boton"
+  />
+</div>
+`;
+
+exports[`GotenForm snapshots with components 1`] = `
+<div>
+  <div>
+    <label
+      className="label"
+    >
+      label 
+    </label>
+    <input
+      className="undefined"
+      label="label"
+      onChange={[Function]}
+      type="text"
+      value="value"
+    />
+    <br />
+  </div>
+  <div>
+    <label
+      className="label"
+    >
+      label 
+    </label>
+    <input
+      className="undefined"
+      label="label"
+      onChange={[Function]}
+      type="text"
+      value="value"
+    />
+    <br />
+  </div>
+</div>
+`;
+
+exports[`GotenForm snapshots with components and buttonComponent 1`] = `
+<div>
+  <div>
+    <label
+      className="label"
+    >
+      label 
+    </label>
+    <input
+      className="undefined"
+      label="label"
+      onChange={[Function]}
+      type="text"
+      value="value"
+    />
+    <br />
+  </div>
+  <div>
+    <label
+      className="label"
+    >
+      label 
+    </label>
+    <input
+      className="undefined"
+      label="label"
+      onChange={[Function]}
+      type="text"
+      value="value"
+    />
+    <br />
+  </div>
+  <input
+    onClick={[Function]}
+    type="submit"
+    value="Boton"
+  />
+</div>
+`;
+
+exports[`GotenForm snapshots with onError 1`] = `<div />`;
+
+exports[`GotenForm snapshots with onSucces 1`] = `<div />`;
