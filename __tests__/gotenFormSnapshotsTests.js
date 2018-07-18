@@ -7,10 +7,10 @@ import { GotenForm } from '../src'
 
 describe('GotenForm snapshots', () => {
 
-    it('with onSucces', () => {
+    it('with onSuccess', () => {
         const tree = renderer.create(
             <GotenForm
-                onSucces={_ => null}
+                onSuccess={_ => null}
             />
         ).toJSON()
         expect(tree).toMatchSnapshot()
@@ -19,7 +19,7 @@ describe('GotenForm snapshots', () => {
     it('with onError', () => {
         const tree = renderer.create(
             <GotenForm
-                onSucces={_ => null}
+                onSuccess={_ => null}
                 onError={_ => null}
             />
         ).toJSON()
@@ -29,7 +29,7 @@ describe('GotenForm snapshots', () => {
     it('with buttonComponent', () => {
         const tree = renderer.create(
             <GotenForm
-                onSucces={_ => null}
+                onSuccess={_ => null}
                 buttonComponent={
                     <input
                         type='submit'
@@ -44,7 +44,7 @@ describe('GotenForm snapshots', () => {
     it('with components', () => {
         const tree = renderer.create(
             <GotenForm
-                onSucces={_ => null}
+                onSuccess={_ => null}
             >
                 <GotenTextField
                     value={'value'}
@@ -64,7 +64,7 @@ describe('GotenForm snapshots', () => {
     it('with components and buttonComponent', () => {
         const tree = renderer.create(
             <GotenForm
-                onSucces={_ => null}
+                onSuccess={_ => null}
                 buttonComponent={
                     <input
                         type='submit'

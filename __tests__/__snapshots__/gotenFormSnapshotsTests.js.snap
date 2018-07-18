@@ -87,4 +87,4 @@ exports[`GotenForm snapshots with components and buttonComponent 1`] = `
 
 exports[`GotenForm snapshots with onError 1`] = `<div />`;
 
-exports[`GotenForm snapshots with onSucces 1`] = `<div />`;
+exports[`GotenForm snapshots with onSuccess 1`] = `<div />`;

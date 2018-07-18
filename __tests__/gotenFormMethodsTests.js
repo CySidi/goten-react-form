@@ -29,13 +29,13 @@ describe('GotenForm validate tests', () => {
         pubsub = undefined
     })
 
-    it('check onSucces', done => {
+    it('check onSuccess', done => {
         const type = 'text'
         const label = 'Text'
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
             >
                 <GotenTextField
                     value={value}
@@ -45,19 +45,19 @@ describe('GotenForm validate tests', () => {
             </GotenForm>
         ).getInstance()
         executeWhenAllMessagesAreRecived(component.pubsubMessage, component.gotenTextFieldCant, _ => {
-            expect(component.props.onSucces).toHaveBeenCalledTimes(1)
+            expect(component.props.onSuccess).toHaveBeenCalledTimes(1)
             done()
         })
         component.validate()
     })
 
-    it('check onSucces with onError', done => {
+    it('check onSuccess with onError', done => {
         const type = 'text'
         const label = 'Text'
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
                 onError={jest.fn()}
             >
                 <GotenTextField
@@ -68,7 +68,7 @@ describe('GotenForm validate tests', () => {
             </GotenForm>
         ).getInstance()
         executeWhenAllMessagesAreRecived(component.pubsubMessage, component.gotenTextFieldCant, _ => {
-            expect(component.props.onSucces).toHaveBeenCalledTimes(1)
+            expect(component.props.onSuccess).toHaveBeenCalledTimes(1)
             done()
         })
         component.validate()
@@ -80,7 +80,7 @@ describe('GotenForm validate tests', () => {
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
                 onError={jest.fn()}
             >
                 <GotenTextField
@@ -91,7 +91,7 @@ describe('GotenForm validate tests', () => {
             </GotenForm>
         ).getInstance()
         executeWhenAllMessagesAreRecived(component.pubsubMessage, component.gotenTextFieldCant, _ => {
-            expect(component.props.onSucces).toHaveBeenCalledTimes(0)
+            expect(component.props.onSuccess).toHaveBeenCalledTimes(0)
             expect(component.props.onError).toHaveBeenCalledTimes(1)
             done()
         })
@@ -104,7 +104,7 @@ describe('GotenForm validate tests', () => {
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
             >
                 <GotenTextField
                     value={value}
@@ -114,19 +114,19 @@ describe('GotenForm validate tests', () => {
             </GotenForm>
         ).getInstance()
         executeWhenAllMessagesAreRecived(component.pubsubMessage, component.gotenTextFieldCant, _ => {
-            expect(component.props.onSucces).toHaveBeenCalledTimes(0)
+            expect(component.props.onSuccess).toHaveBeenCalledTimes(0)
             done()
         })
         component.validate()
     })
 
-    it('check onSucces with buttonComponent', done => {
+    it('check onSuccess with buttonComponent', done => {
         const type = 'text'
         const label = 'Text'
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
                 buttonComponent={
                     <button
                         value='Boton'
@@ -142,19 +142,19 @@ describe('GotenForm validate tests', () => {
         )
         const componentInstance = component.getInstance()
         executeWhenAllMessagesAreRecived(componentInstance.pubsubMessage, componentInstance.gotenTextFieldCant, _ => {
-            expect(componentInstance.props.onSucces).toHaveBeenCalledTimes(1)
+            expect(componentInstance.props.onSuccess).toHaveBeenCalledTimes(1)
             done()
         })
         component.root.findByType('button').props.onClick()
     })
 
-    it('check onSucces with onError with buttonComponent', done => {
+    it('check onSuccess with onError with buttonComponent', done => {
         const type = 'text'
         const label = 'Text'
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
                 onError={jest.fn()}
                 buttonComponent={
                     <button
@@ -171,7 +171,7 @@ describe('GotenForm validate tests', () => {
         )
         const componentInstance = component.getInstance()
         executeWhenAllMessagesAreRecived(componentInstance.pubsubMessage, componentInstance.gotenTextFieldCant, _ => {
-            expect(componentInstance.props.onSucces).toHaveBeenCalledTimes(1)
+            expect(componentInstance.props.onSuccess).toHaveBeenCalledTimes(1)
             done()
         })        
         component.root.findByType('button').props.onClick()
@@ -183,7 +183,7 @@ describe('GotenForm validate tests', () => {
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
                 onError={jest.fn()}
                 buttonComponent={
                     <button
@@ -200,7 +200,7 @@ describe('GotenForm validate tests', () => {
         )
         const componentInstance = component.getInstance()
         executeWhenAllMessagesAreRecived(componentInstance.pubsubMessage, componentInstance.gotenTextFieldCant, _ => {
-            expect(componentInstance.props.onSucces).toHaveBeenCalledTimes(0)
+            expect(componentInstance.props.onSuccess).toHaveBeenCalledTimes(0)
             expect(componentInstance.props.onError).toHaveBeenCalledTimes(1)
             done()
         })
@@ -213,7 +213,7 @@ describe('GotenForm validate tests', () => {
         const value = 'it is a value'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
                 buttonComponent={
                     <button
                         value='Button'
@@ -229,7 +229,7 @@ describe('GotenForm validate tests', () => {
         )
         const componentInstance = component.getInstance()
         executeWhenAllMessagesAreRecived(componentInstance.pubsubMessage, componentInstance.gotenTextFieldCant, _ => {
-            expect(componentInstance.props.onSucces).toHaveBeenCalledTimes(0)
+            expect(componentInstance.props.onSuccess).toHaveBeenCalledTimes(0)
             done()
         })        
         component.root.findByType('button').props.onClick()

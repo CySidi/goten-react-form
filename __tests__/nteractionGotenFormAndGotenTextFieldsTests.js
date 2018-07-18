@@ -20,7 +20,7 @@ describe('Interaction beetwen GotenForm and GotenTextField', () => {
         let pubsubMessage = undefined
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
             >
                 <GotenTextField
                     value={value}
@@ -39,7 +39,7 @@ describe('Interaction beetwen GotenForm and GotenTextField', () => {
         const value = 'valueToSearch'
         const component = renderer.create(
             <GotenForm
-                onSucces={jest.fn()}
+                onSuccess={jest.fn()}
             >
                 <GotenTextField
                     value={value}
@@ -73,7 +73,7 @@ describe('Interaction beetwen GotenForm and GotenTextField', () => {
         const value = 'valueToSearch'
         const component1 = renderer.create(
                 <GotenForm
-                    onSucces={_ => null}
+                    onSuccess={_ => null}
                 >
                     <GotenTextField
                         value={value}
@@ -89,7 +89,7 @@ describe('Interaction beetwen GotenForm and GotenTextField', () => {
         )
         const component2 = renderer.create(
             <GotenForm
-                onSucces={_ => null}
+                onSuccess={_ => null}
             >
                 <GotenTextField
                     value={value}

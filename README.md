@@ -24,7 +24,7 @@ import { GotenForm } from 'goten-react-form'; // ES6
 
 
 <GotenForm
-    onSucces = {() => console.log("onSuccesMethod")}
+    onSuccess = {() => console.log("onSuccessMethod")}
 />
     <Component1>
         <GotenComponent/>
@@ -47,7 +47,7 @@ export default class App extends Component {
     render() {
         return (
             <GotenForm
-                onSucces = {()=> console.log("SUCCES")}
+                onSuccess = {()=> console.log("SUCCESS")}
                 onError = {() => console.log("ERROR")}
                 buttonComponent = {
                     <input
@@ -102,7 +102,7 @@ export default class App extends Component {
     render() {
         return (
             <GotenForm
-                onSucces = {() => console.log("SUCCES")}
+                onSuccess = {() => console.log("SUCCESS")}
                 onError = {() => console.log("ERROR")}
                 ref = {this.refForm}
             >
@@ -148,7 +148,7 @@ export default class App extends Component {
 
 | Prop Name       | Type      | Default | Required | Description                                                                  |
 |-----------------|-----------|---------|----------|------------------------------------------------------------------------------|
-| onSucces        | Function  |         | True     | This function is executed when all Goten components are validated correctly. |
+| onSuccess        | Function  |         | True     | This function is executed when all Goten components are validated correctly. |
 | onError         | Function  |         | False    | This function is executed when all Goten components are validated correctly. |
 | buttonComponent | Component |         | False    | Component that will be clicked.                                              |
 

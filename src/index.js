@@ -23,7 +23,7 @@ export class GotenForm extends Component {
             }
             if (this.responses === this.gotenTextFieldCant) {
                 const onError = this.props.onError ? this.props.onError : _=> null
-                this.errorTrue ? onError() : this.props.onSucces()
+                this.errorTrue ? onError() : this.props.onSuccess()
             }
         })
     }
@@ -72,6 +72,6 @@ export class GotenForm extends Component {
 
 GotenForm.propTypes = {
     buttonComponent: PropTypes.element,
-    onSucces: PropTypes.func.isRequired,
+    onSuccess: PropTypes.func.isRequired,
     onError: PropTypes.func
 }

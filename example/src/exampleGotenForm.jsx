@@ -75,7 +75,7 @@ export default class ExampleGotenForm extends Component {
     render() {
         return (
             <GotenForm
-                onSucces = { _=> {
+                onSuccess = { _=> {
                     this.message = 'FORM PASSED'
                     this.setState({ changeOnPress: !this.state.changeOnPress })
                 }}
